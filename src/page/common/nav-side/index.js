@@ -15,7 +15,6 @@ var navSide = {
     },
     init : function(option){
         // 合并选项
-        debugger;
         $.extend(this.option, option);
         this.renderNav();
     },

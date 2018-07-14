@@ -7,7 +7,6 @@ var conf = {
 var _mm = {
     // 网络请求
     request : function(param){
-        debugger;
         var _this = this;
         $.ajax({
             type        : param.method  || 'get',
@@ -45,7 +44,6 @@ var _mm = {
     },
     // 渲染html模板
     renderHtml : function(htmlTemplate, data){
-        debugger;
         var template    = Hogan.compile(htmlTemplate),
             result      = template.render(data);
         return result;
