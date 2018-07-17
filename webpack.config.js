@@ -25,6 +25,8 @@ var config = {
         'detail': ['./src/page/detail/index.js'],
         'cart': ['./src/page/cart/index.js'],
         'order-confirm': ['./src/page/order-confirm/index.js'],
+        'order-list': ['./src/page/order-list/index.js'],
+        'order-detail': ['./src/page/order-detail/index.js'],
         'user-login': ['./src/page/user-login/index.js'],
         'user-register': ['./src/page/user-register/index.js'],
         'user-pass-reset': ['./src/page/user-pass-reset/index.js'],
@@ -75,10 +77,12 @@ var config = {
         new ExtractTextPlugin("css/[name].css"),
         // html模板的处理
         new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
-        new HtmlWebpackPlugin(getHtmlConfig('list', '商品列表页')),
-        new HtmlWebpackPlugin(getHtmlConfig('detail', '商品详情页')),
+        new HtmlWebpackPlugin(getHtmlConfig('list', '商品列表')),
+        new HtmlWebpackPlugin(getHtmlConfig('detail', '商品详情')),
         new HtmlWebpackPlugin(getHtmlConfig('cart', '购物车')),
-        new HtmlWebpackPlugin(getHtmlConfig('order-confirm', '订单确认页')),
+        new HtmlWebpackPlugin(getHtmlConfig('order-confirm', '订单确认')),
+        new HtmlWebpackPlugin(getHtmlConfig('order-list', '订单列表')),
+        new HtmlWebpackPlugin(getHtmlConfig('order-detail', '订单详情')),
         new HtmlWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
         new HtmlWebpackPlugin(getHtmlConfig('user-register', '用户注册')),
         new HtmlWebpackPlugin(getHtmlConfig('user-pass-reset', '找回密码')),
@@ -99,7 +103,7 @@ var config = {
         // //     // watchOptions: {
         // //     //     aggregateTimeout: 300
         // //     // },
-        // //     port: '8089', //设置端口号
+        // port: '8089', //设置端口号
         publicPath: '/dist',
         // //     // contentBase: '/dist',
         // //     //其实很简单的，只要配置这个参数就可以了
@@ -109,8 +113,11 @@ var config = {
         proxy: [{
             // //         context: ['/user', '/product','/list'],
             context: ['/user', '/product', '/list', '/cart', '/order', '/shipping'],
-            //         target: 'http://www.happymmall.com',
+            // target: 'http://happymmall.com',
             target: 'http://127.0.0.1:8080',
+            secure: false,
+            changeOrigin: true, //是否跨域
+
         }]
     }
 };
